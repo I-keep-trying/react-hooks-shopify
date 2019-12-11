@@ -15,6 +15,7 @@ const Cart = props => {
           removeLineItemInCart={props.removeLineItemInCart}
           key={line_item.id.toString()}
           line_item={line_item}
+          variant={line_item.variant.title}
         />
       )
     })
@@ -30,7 +31,7 @@ const Cart = props => {
           ×
         </button>
       </header>
-      <ul className="Cart__line-items">{line_items}</ul>
+      <ul className="Cart__line-items">Line items {line_items}</ul>
       <footer className="Cart__footer">
         <div className="Cart-info clearfix">
           <div className="Cart-info__total Cart-info__small">Subtotal</div>

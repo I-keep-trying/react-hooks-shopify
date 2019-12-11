@@ -7,39 +7,13 @@ const initState = {
 }
 
 // actions
-/* const filterReducer = (state, action) => {
-  switch (action.type) {
-    case 'CLIENT_CREATED':
-      return 'INIT'
-    case 'PRODUCTS_FOUND':
-      return 'PRODUCTS_FOUND'
-    case 'CHECKOUT_FOUND':
-      return 'CHECKOUT_FOUND'
-    case 'SHOP_FOUND':
-      return 'SHOP_FOUND'
-    case 'ADD_VARIANT_TO_CART':
-      return 'ADD_VARIANT_TO_CART'
-    case 'UPDATE_QUANTITY_IN_CART':
-      return 'UPDATE_QUANTITY_IN_CART'
-    case 'REMOVE_LINE_ITEM_IN_CART':
-      return 'REMOVE_LINE_ITEM_IN_CART'
-    case 'OPEN_CART':
-      return 'OPEN_CART'
-    case 'CLOSE_CART':
-      return 'CLOSE_CART'
-    default:
-      return state
-  }
-} */
-/* const CLIENT_CREATED = 'CLIENT_CREATED'
-const PRODUCTS_FOUND = 'PRODUCTS_FOUND'
-const CHECKOUT_FOUND = 'CHECKOUT_FOUND'
-const SHOP_FOUND = 'SHOP_FOUND'
-const ADD_VARIANT_TO_CART = 'ADD_VARIANT_TO_CART'
-const UPDATE_QUANTITY_IN_CART = 'UPDATE_QUANTITY_IN_CART'
-const REMOVE_LINE_ITEM_IN_CART = 'REMOVE_LINE_ITEM_IN_CART'
-const OPEN_CART = 'OPEN_CART'
-const CLOSE_CART = 'CLOSE_CART' */
+/* I moved these to `App3.js` yes I have a 3rd copy lol 
+That is the only component with 3 copies, so far.
+Because `App2.js` still works after making it a functional component.
+Then I decided I needed a sandbox copy for messing with state hooks.
+App3 is still not working :( 
+*/
+
 
 // reducer
 export default (state = initState, action) => {

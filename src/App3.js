@@ -3,15 +3,18 @@ import './App.css'
 import { connect } from 'react-redux'
 import Cart from './components/shopify/Cart2'
 // import store from './store'
-import reducer from './reducers/cart2'
+import reducer from './reducers/cart2' // copied from './store'
 /* 
-Contents of ./store, just three lines:
+Contents of ./store, just these three lines, omitted in order to identify
+critical redux functionality:
 import {createStore} from 'redux';
 import reducer from './reducers/cart';
 export default createStore(reducer);
+
 */
 
 // custom components
+// None of this works 
 import Nav from './components/Nav2'
 import GenericProductsPage from './components/GenericProductsPage2'
 
@@ -63,13 +66,30 @@ const useCombinedReducer = combinedReducers => {
   return [state, dispatch]
 }
 
+const updateQuantityInCart = (lineItemId, quantity) => {
+  // const state = store.getState() // state from redux store
+  const [state, dispatch] = useContext(DispatchContext) 
+  const checkoutId = state.actionPayload.checkout.id
+   const lineItemsToUpdate = [
+     { id: lineItemId, quantity: parseInt(quantity, 10) },
+   ]
+   state.actionPayload.checkout
+     .updateLineItems(checkoutId, lineItemsToUpdate)
+     .then(res => {
+       dispatch({
+         type: 'UPDATE_QUANTITY_IN_CART',
+         payload: { checkout: res },
+       })
+     })
+ }
+
 const App = () => {
   const [state, dispatch] = useCombinedReducer({
     init: useReducer(initReducer, 'CLIENT_CREATED'),
     actionPayload: useReducer(reducer, initState),
   })
 
-  const updateQuantityInCart = (lineItemId, quantity) => {
+/*   const updateQuantityInCart = (lineItemId, quantity) => {
    // const state = store.getState() // state from redux store
    const dispatch = useContext(DispatchContext) 
    const checkoutId = state.actionPayload.checkout.id
@@ -84,7 +104,7 @@ const App = () => {
           payload: { checkout: res },
         })
       })
-  }
+  } */
 
   const removeLineItemInCart = lineItemId => {
    // const state = store.getState() // state from redux store

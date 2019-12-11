@@ -1,6 +1,7 @@
 import React from 'react'
 
 const VariantSelector = props => {
+// console.log(props.option)
   return (
     <select
       className="Product__option"

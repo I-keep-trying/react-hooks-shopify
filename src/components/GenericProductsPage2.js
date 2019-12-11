@@ -18,13 +18,17 @@ const GenericProductsPage = () => {
       products={state.products}
       client={state.client}
       addVariantToCart={addVariantToCart}
-    />;
+    /> ;
     return(
       <div>
-        <h1>Whoa, here's a generic Products Page / Section Title!</h1>
-        <p>And here's a products page paragraph tag with a semicolon at the end signaling that the products are below:</p>
+        <h1>dev-store9</h1>
+        <p>Sandbox store with fake products</p>
+        <br />
+        <p>Built with React 16.11.0, Redux, and shopify-buy</p>
         {oProducts}
+        <pre>{JSON.stringify(state, null, 2)}</pre>
       </div>
+      
     )
 }
 

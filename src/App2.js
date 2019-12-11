@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { connect } from 'react-redux'
-import Cart from './components/shopify/Cart'
+import Cart from './components/shopify/Cart2'
 import store from './store'
 /* 
 Contents of ./store, just three lines:
