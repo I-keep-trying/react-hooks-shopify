@@ -71,7 +71,8 @@ const App = () => {
           removeLineItemInCart={removeLineItemInCart}
         />
         <GenericProductsPage />
-        
+       {/*  <pre>{JSON.stringify(state, null, 2)}</pre>  */}
+
       </div>
     )
   

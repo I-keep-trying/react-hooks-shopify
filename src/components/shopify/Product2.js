@@ -1,16 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import VariantSelector from './VariantSelector2'
 
 // constants
 const ONE_SIZE_FITS_MOST = 'One Size Fits Most'
 
 const Product = props => {
-const [state, setState] = useState({ selectedOptions: {} })
 
-    let defaultOptionValues = state.selectedOptions
-    props.product.options.forEach(selector => {
-      defaultOptionValues[selector.name] = selector.values[0].value
-    })
+const [state, setState] = useState(props)
+
+useEffect(() => {
+  setState(props)
+  
+
+}, [props])
+
+
+let defaultOptionValues = {}
+props.product.options.forEach(selector => {
+    defaultOptionValues[selector.name] = selector.values[0].value
+  })
+  
+
+ console.log(defaultOptionValues)
+// should be: {Title: "xs"} instead it's: [GraphModel, type: {...}, id: "xs"]
+
+
+/*     props.product.options.forEach((selector, i) => {
+      defaultOptionValues[selector.id] = selector.values[i].value
+     // console.log(defaultOptionValues) // defaultOptionValues now contains all size options
+    }) */
 
 /*   const findImage = (images, variantId) => {
     const primary = images[0]
@@ -24,12 +42,11 @@ const [state, setState] = useState({ selectedOptions: {} })
 
   const handleOptionChange = (event) => {
     const target = event.target
-    let selectedOptions = state.selectedOptions
-    selectedOptions[target.name] = target.value
+     defaultOptionValues[target.name] = target.value
 
     const selectedVariant = props.client.product.helpers.variantForOptions(
       props.product,
-      selectedOptions
+      defaultOptionValues
     )
 
     setState({
@@ -54,11 +71,16 @@ const [state, setState] = useState({ selectedOptions: {} })
     let variantSelectors = props.product.options.map(option => {
       aOptionNames.push(option.name)
       return (
+        <>
         <VariantSelector
           handleOptionChange={handleOptionChange}
           key={option.id.toString()}
           option={option}
         />
+        <div>
+
+        </div>
+        </>
       )
     })
     let bShowOneSizeFitsMost =
@@ -77,7 +99,7 @@ const [state, setState] = useState({ selectedOptions: {} })
           <h5 className="Product__title">{ONE_SIZE_FITS_MOST}</h5>
         ) : (
           variantSelectors
-        )}
+        )}{variantSelectors}
         <label className="Product__option">
           Quantity:{' '}
           <input

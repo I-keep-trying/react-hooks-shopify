@@ -11,15 +11,19 @@ class Product extends Component {
     let defaultOptionValues = {}
     this.props.product.options.forEach(selector => {
       defaultOptionValues[selector.name] = selector.values[0].value
+      
     })
+    // console.log(this.props.product.options) 
     this.state = { selectedOptions: defaultOptionValues }
 
     this.handleOptionChange = this.handleOptionChange.bind(this)
     this.handleQuantityChange = this.handleQuantityChange.bind(this)
-    this.findImage = this.findImage.bind(this)
-  }
+    // this.findImage = this.findImage.bind(this)
+    console.log(this.state.selectedOptions) 
 
-  findImage(images, variantId) {
+  }
+  
+/*   findImage(images, variantId) {
     const primary = images[0]
 
     const image = images.filter(function(image) {
@@ -27,9 +31,9 @@ class Product extends Component {
     })[0]
 
     return (image || primary).src
-  }
-
+  } */
   handleOptionChange(event) {
+    console.log(this.state.selectedOptions)
     const target = event.target
     let selectedOptions = this.state.selectedOptions
     selectedOptions[target.name] = target.value
@@ -83,7 +87,7 @@ class Product extends Component {
           <h5 className="Product__title">{ONE_SIZE_FITS_MOST}</h5>
         ) : (
           variantSelectors
-        )}
+        )}{variantSelectors}
         <label className="Product__option">
           Quantity:{' '}
           <input
