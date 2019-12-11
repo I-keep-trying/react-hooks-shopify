@@ -26,7 +26,7 @@ const GenericProductsPage = () => {
         <br />
         <p>Built with React 16.11.0, Redux, and shopify-buy</p>
         {oProducts}
-        <pre>{JSON.stringify(state, null, 2)}</pre>
+{/*         <pre>{JSON.stringify(state, null, 2)}</pre> */}
       </div>
       
     )
