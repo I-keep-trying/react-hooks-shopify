@@ -13,13 +13,11 @@ class Product extends Component {
       defaultOptionValues[selector.name] = selector.values[0].value
       
     })
-    // console.log(this.props.product.options) 
     this.state = { selectedOptions: defaultOptionValues }
 
     this.handleOptionChange = this.handleOptionChange.bind(this)
     this.handleQuantityChange = this.handleQuantityChange.bind(this)
     // this.findImage = this.findImage.bind(this)
-    console.log(this.state.selectedOptions) 
 
   }
   
@@ -33,7 +31,6 @@ class Product extends Component {
     return (image || primary).src
   } */
   handleOptionChange(event) {
-    console.log(this.state.selectedOptions)
     const target = event.target
     let selectedOptions = this.state.selectedOptions
     selectedOptions[target.name] = target.value

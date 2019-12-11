@@ -10,35 +10,12 @@ const [state, setState] = useState(props)
 
 useEffect(() => {
   setState(props)
-  
-
 }, [props])
-
 
 let defaultOptionValues = {}
 props.product.options.forEach(selector => {
     defaultOptionValues[selector.name] = selector.values[0].value
   })
-  
-
- console.log(defaultOptionValues)
-// should be: {Title: "xs"} instead it's: [GraphModel, type: {...}, id: "xs"]
-
-
-/*     props.product.options.forEach((selector, i) => {
-      defaultOptionValues[selector.id] = selector.values[i].value
-     // console.log(defaultOptionValues) // defaultOptionValues now contains all size options
-    }) */
-
-/*   const findImage = (images, variantId) => {
-    const primary = images[0]
-
-    const image = images.filter(function(image) {
-      return image.variant_ids.includes(variantId)
-    })[0]
-
-    return (image || primary).src
-  } */
 
   const handleOptionChange = (event) => {
     const target = event.target
@@ -68,6 +45,7 @@ props.product.options.forEach(selector => {
     let variantImage =
       state.selectedVariantImage || props.product.images[0]
     let variant = state.selectedVariant || props.product.variants[0]
+    console.log(props.product.options[0])
     let variantSelectors = props.product.options.map(option => {
       aOptionNames.push(option.name)
       return (
@@ -83,23 +61,19 @@ props.product.options.forEach(selector => {
         </>
       )
     })
-    let bShowOneSizeFitsMost =
-      variantSelectors.length === 1 && aOptionNames[0] === 'Title'
+
     return (
       <div className="Product">
+        {aOptionNames[0]}
         {props.product.images.length ? (
           <img
             src={variantImage.src}
             alt={`${props.product.title} product shot`}
           />
         ) : null}
-        <h5 className="Product__title">{props.product.title}</h5>
+        <h5 className="Product__title">Title: {props.product.title} </h5>
         <p>${variant.price}</p>
-        {bShowOneSizeFitsMost ? (
-          <h5 className="Product__title">{ONE_SIZE_FITS_MOST}</h5>
-        ) : (
-          variantSelectors
-        )}{variantSelectors}
+       {variantSelectors}
         <label className="Product__option">
           Quantity:{' '}
           <input

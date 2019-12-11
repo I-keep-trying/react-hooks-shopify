@@ -13,7 +13,7 @@ const LineItem = props => {
 
   return (
     <li className="Line-item">
-      <div className="Line-item__img">
+      <div>
         {props.line_item.variant.image ? (
           <img
             src={props.line_item.variant.image.src}
@@ -24,9 +24,16 @@ const LineItem = props => {
       <div className="Line-item__content">
         <div className="Line-item__content-row">
           <div className="Line-item__variant-title">
-           {props.line_item.variant.title} {/* variant; item size */}
+          <span className="Line-item__title">
+             {props.line_item.title} </span>
           </div>
-          <span className="Line-item__title">{props.line_item.title}</span>
+        </div>
+        <div className="Line-item__content-row">
+          <div className="Line-item__variant-title">
+          <span className="Line-item__title">
+             Size: {props.line_item.variant.title}</span>
+          </div>
+         
         </div>
         <div className="Line-item__content-row">
           <div className="Line-item__quantity-container">
